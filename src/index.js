@@ -6,7 +6,7 @@ import App from './App';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'https://cors-anywhere.herokuapp.com/https://mr79ng.sse.codesandbox.io/graphql',
+  uri: 'https://mr79ng.sse.codesandbox.io/graphql',
 
   cache: new InMemoryCache(),
 });

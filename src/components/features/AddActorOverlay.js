@@ -1,21 +1,44 @@
-import React from 'react';
-import CustomDrawer from '../core/CustomDrawer';
-import { FormControl, FormLabel, Input, Stack } from '@chakra-ui/react';
+import React, { useState } from 'react';
+
+import FormDrawer from '../core/FormDrawer';
+import usePostActor from '../../hooks/usePostActor';
 
 const AddActorOverlay = ({ isOpen, onClose }) => {
+  const { mutateFunction, loading, error, data } = usePostActor();
+
+  const handleSubmit = val => {
+    mutateFunction({
+      variables: { name: val.actorName, age: parseInt(val.actorAge) },
+    });
+  };
+
+  const actorForm = [
+    {
+      name: 'actorName',
+      label: 'Actor Name',
+      type: 'text',
+    },
+    {
+      name: 'actorAge',
+      label: 'Actor Age',
+      type: 'number',
+    },
+  ];
+
   return (
-    <CustomDrawer title="Add Actor" isOpen={isOpen} onClose={onClose}>
-      <Stack>
-        <FormControl>
-          <FormLabel>Actor Name</FormLabel>
-          <Input type="text" />
-        </FormControl>
-        <FormControl>
-          <FormLabel>Actor Age</FormLabel>
-          <Input type="text" />
-        </FormControl>
-      </Stack>
-    </CustomDrawer>
+    <FormDrawer
+      title="Add Actor"
+      isOpen={isOpen}
+      onClose={onClose}
+      data={actorForm}
+      initialValues={{
+        actorName: '',
+        actorAge: '',
+      }}
+      onSubmit={val => handleSubmit(val)}
+      formId="form-actor"
+      isLoading={loading}
+    />
   );
 };
 

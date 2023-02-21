@@ -1,3 +1,5 @@
 import useGetListMovie from './useGetListMovie';
 
-export { useGetListMovie };
+import useGetListActor from './useGetListActor';
+
+export { useGetListMovie, useGetListActor };

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import Modal from './Modal';
 
-const Card = ({ onOpen, data, selectedItem, onClose }) => {
+const Card = ({ onOpen, data }) => {
   return (
     <>
       <Box
@@ -20,12 +20,12 @@ const Card = ({ onOpen, data, selectedItem, onClose }) => {
       >
         <Image src={data?.image} />
         <Box position="absolute" w="full" h="full" inset="0" p="5">
-          <Heading>{data?.name}</Heading>
-          <Text fontWeight="semibold">{data?.genre}</Text>
+          <Heading color="white">{data?.name}</Heading>
+          <Text fontWeight="semibold" color="white">
+            {data?.genre}
+          </Text>
         </Box>
       </Box>
-
-      <Modal selectedItem={selectedItem} onClose={onClose} />
     </>
   );
 };

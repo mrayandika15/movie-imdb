@@ -30,20 +30,6 @@ const Navbar = ({ handleMovie, handleActor }) => {
         Movies
       </Heading>
 
-      <InputGroup w="450px" position="absolute" left="0" right="0" m="auto">
-        <Input
-          rounded="xl"
-          _focusVisible={{ borderColor: color }}
-          border="2px"
-          shadow="3xl"
-          borderColor="gray"
-          _hover={{ borderColor: color }}
-        />
-        <InputRightElement>
-          <BsSearch />
-        </InputRightElement>
-      </InputGroup>
-
       <Flex gap="5px" alignItems="center">
         <Button variant="primary" size="xs" onClick={handleMovie}>
           Add Movies

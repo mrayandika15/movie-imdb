@@ -31,7 +31,7 @@ const Modal = ({ selectedItem, onClose }) => {
       >
         <Box
           w="700px"
-          h="700px"
+          h="500px"
           overflow="hidden"
           bg="black"
           rounded="2xl"

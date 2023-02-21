@@ -31,8 +31,6 @@ const useGetListMovie = () => {
     }
   }, [movies]);
 
-  console.log(transformMovies);
-
   return { data: transformMovies, loading, error };
 };
 

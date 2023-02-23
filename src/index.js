@@ -3,11 +3,18 @@ import React from 'react';
 import * as ReactDOM from 'react-dom/client';
 import App from './App';
 
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+  HttpLink,
+} from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'https://mr79ng.sse.codesandbox.io/graphql',
-
+  link: new createHttpLink({
+    uri: '/graphql',
+  }),
   cache: new InMemoryCache(),
 });
 

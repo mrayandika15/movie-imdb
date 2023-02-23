@@ -4,7 +4,7 @@ import Card from '../core/Card';
 import randomSourceImage from '../../utils/randomSourceImage';
 import Modal from '../core/Modal';
 import { useGetListMovie } from '../../hooks';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ListMovie = () => {
   const [selectedItem, setSelectedItem] = useState();
@@ -12,7 +12,7 @@ const ListMovie = () => {
   const { data, loading } = useGetListMovie({});
 
   return (
-    <>
+    <AnimatePresence>
       {loading ? (
         <Box justifyContent="center" w="full" display="flex" py="2">
           <Spinner size="xl" color="red.700" />
@@ -24,9 +24,6 @@ const ListMovie = () => {
           padding={4}
           sx={{ columnCount: [1, 2, 3], columnGap: '10px' }}
           as={motion.div}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 1 } }}
         >
           {data?.map((item, index) => {
             return (
@@ -45,7 +42,7 @@ const ListMovie = () => {
         selectedItem={selectedItem}
         onClose={() => setSelectedItem(null)}
       />
-    </>
+    </AnimatePresence>
   );
 };
 

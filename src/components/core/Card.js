@@ -17,6 +17,9 @@ const Card = ({ onOpen, data }) => {
         onClick={onOpen}
         as={motion.div}
         layoutId={`card-${data?.id}`}
+        initial={{ opacity: 0, y: '100%' }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: '100%' }}
       >
         <Image src={data?.image} />
         <Box position="absolute" w="full" h="full" inset="0" p="5">

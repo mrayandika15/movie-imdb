@@ -1,10 +1,10 @@
-import { Box, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Heading, Image, Spinner, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import React from 'react';
 import useGetMovie from '../../hooks/useGetMovie';
 
 const Modal = ({ selectedItem, onClose }) => {
-  const { data } = useGetMovie({ id: selectedItem?.id });
+  const { data, loading } = useGetMovie({ id: selectedItem?.id });
 
   if (!selectedItem) {
     return <></>;
@@ -71,7 +71,11 @@ const Modal = ({ selectedItem, onClose }) => {
           <Box pt="5" px="5">
             <Heading>Actor</Heading>
             <Text>
-              {data?.actor?.name}, {data?.actor?.age}
+              {loading ? (
+                <Spinner />
+              ) : (
+                ` ${data?.actor?.name} , ${data?.actor?.age}`
+              )}
             </Text>
           </Box>
         </Box>
